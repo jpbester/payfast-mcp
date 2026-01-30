@@ -89,10 +89,61 @@ Add to your Claude Desktop config (`claude_desktop_config.json`):
 Add to your Claude Code settings:
 
 ```bash
-claude mcp add payfast -- npx -y payfast-mcp
+claude mcp add payfast \
+  -e PAYFAST_MERCHANT_ID=your-merchant-id \
+  -e PAYFAST_MERCHANT_KEY=your-merchant-key \
+  -e PAYFAST_PASSPHRASE=your-passphrase \
+  -e PAYFAST_ENVIRONMENT=sandbox \
+  -- npx -y payfast-mcp
 ```
 
-Then set environment variables in your shell before running Claude Code.
+### Cursor
+
+Add to your Cursor MCP config (`.cursor/mcp.json` for project-level, or `~/.cursor/mcp.json` for global):
+
+```json
+{
+  "mcpServers": {
+    "payfast": {
+      "command": "npx",
+      "args": ["-y", "payfast-mcp"],
+      "env": {
+        "PAYFAST_MERCHANT_ID": "your-merchant-id",
+        "PAYFAST_MERCHANT_KEY": "your-merchant-key",
+        "PAYFAST_PASSPHRASE": "your-passphrase",
+        "PAYFAST_ENVIRONMENT": "sandbox"
+      }
+    }
+  }
+}
+```
+
+### Codex
+
+Add via the Codex CLI:
+
+```bash
+codex mcp add payfast \
+  --env PAYFAST_MERCHANT_ID=your-merchant-id \
+  --env PAYFAST_MERCHANT_KEY=your-merchant-key \
+  --env PAYFAST_PASSPHRASE=your-passphrase \
+  --env PAYFAST_ENVIRONMENT=sandbox \
+  -- npx -y payfast-mcp
+```
+
+Or add directly to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.payfast]
+command = "npx"
+args = ["-y", "payfast-mcp"]
+
+[mcp_servers.payfast.env]
+PAYFAST_MERCHANT_ID = "your-merchant-id"
+PAYFAST_MERCHANT_KEY = "your-merchant-key"
+PAYFAST_PASSPHRASE = "your-passphrase"
+PAYFAST_ENVIRONMENT = "sandbox"
+```
 
 ## Development
 
