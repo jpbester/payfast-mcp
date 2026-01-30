@@ -1,12 +1,17 @@
 {
   "name": "payfast-mcp",
-  "version": "0.1.0",
-  "description": "MCP server for PayFast South African payment gateway",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) server for PayFast — enables AI assistants to interact with South Africa's leading payment gateway",
   "main": "dist/index.js",
   "type": "module",
   "bin": {
     "payfast-mcp": "./dist/index.js"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "ts-node --esm src/index.ts",
@@ -14,7 +19,31 @@
     "test": "vitest run tests/unit",
     "test:integration": "vitest run tests/integration",
     "test:all": "vitest run",
-    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "payfast",
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "payment",
+    "south-africa",
+    "claude",
+    "llm",
+    "fintech"
+  ],
+  "author": "JP Bester",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpbester/payfast-mcp.git"
+  },
+  "homepage": "https://github.com/jpbester/payfast-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/jpbester/payfast-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
