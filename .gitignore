@@ -21,3 +21,9 @@ Thumbs.db
 # MCP publisher binary
 mcp-publisher*
 !server.json
+
+# MCP registry auth tokens
+.mcpregistry_*
+
+# Test output
+test-results.json
